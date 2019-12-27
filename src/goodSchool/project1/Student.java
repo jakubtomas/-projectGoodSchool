@@ -28,8 +28,11 @@ public class Student extends Person {
     }
 
 
-
     public int getAbsence() {
         return absence;
+    }
+
+    public double getAverageGrade() {
+        return 4.2;  // you have to  change this
     }
 }
