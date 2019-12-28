@@ -33,6 +33,7 @@ public class Student extends Person {
     }
 
     public double getAverageGrade() {
-        return 4.2;  // you have to  change this
+         return (this.g_Eng+this.g_Inf+this.g_Mat) /3.0;
+            // take all grades and do division number 3
     }
 }

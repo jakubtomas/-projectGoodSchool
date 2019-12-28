@@ -1,8 +1,8 @@
 package goodSchool.project1;
 
 abstract public class Person {
-    protected String firstName;
-    protected String lastName;
+    private String firstName;
+    private String lastName;
 
 
 

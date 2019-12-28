@@ -3,7 +3,7 @@ package goodSchool.project1;
 import java.awt.*;
 
 public interface SchoolStat {
-    public int getAverageAbsence();
+    public double getAverageAbsence();
 
     public int getTheLowestAbsence();
 
@@ -18,4 +18,7 @@ public interface SchoolStat {
     public List getListSortedByLastNameAsc();
 
     public List getListSortedByAbsenceDesc();
+
+
+
 }
