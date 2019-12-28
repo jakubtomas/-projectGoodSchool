@@ -10,8 +10,8 @@ public class Main {
         System.out.println("helloussss world");
 
         School school1 = new School();
-        Student student1 = new Student("Peter", "Sagan", (byte) 1, (byte) 1, (byte) 1, 312);
-        Student student2 = new Student("Jakub", "prezvisko", (byte) 1, (byte) 2, (byte) 3, 33);
+        Student student1 = new Student("Peter", "Sagan", (byte) 1, (byte) 1, (byte) 4, 312);
+        Student student2 = new Student("Jakub", "prezvisko", (byte) 1, (byte) 1, (byte) 1, 33);
         Student student3 = new Student("jozef", "priezvisko", (byte) 4, (byte) 2, (byte) 2, 9);
         Student student4 = new Student("Peter", "second name", (byte) 1, (byte) 2, (byte) 1, 12);
         Student student5 = new Student("Peter", "second name", (byte) 2, (byte) 2, (byte) 1, 12);
@@ -34,6 +34,12 @@ public class Main {
 
         System.out.println(" Average grade from Math all students is " + school1.getAverageGradeFromMath());
 
-        school1.getTheBestStudent();
+        System.out.println("The best student in this amazing school is "+ school1.getTheBestStudent().getFullName());
+
+        System.out.println(" The worst student in this amazing shchool is " + school1.getTheWorstStudent().getFullName());
+
+        school1.getListSortedByAbsenceDesc();
+
+
 }
 }
