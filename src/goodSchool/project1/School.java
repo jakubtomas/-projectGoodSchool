@@ -146,7 +146,7 @@ public class School implements SchoolStat {
             }
         }
 
-        Student theBestStudent;
+        Student theBestStudent = null;
         for (int i = 0; i < n; i++) {
             if (helpArray[0] == list.get(i).getAverageGrade()) {
                 System.out.println(list.get(i).getFullName());
@@ -155,11 +155,13 @@ public class School implements SchoolStat {
         }
         System.out.println(helpArray[0]);
 
-        return null;
+        return theBestStudent;
     }
 
     @Override
     public Student getTheWorstStudent() {
+
+
         return null;
     }
 
