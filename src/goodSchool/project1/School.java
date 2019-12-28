@@ -17,10 +17,10 @@ public class School implements SchoolStat {
     }
 
     public void showlist() {  // notes this function delete
-        for (int i = 0; i < list.size(); i++) {
+        /*for (int i = 0; i < list.size(); i++) {
             System.out.println("hellou");
             System.out.println(list.get(i).getAbsence());
-        }
+        }*/
     }
 
     public static int getCount() {
@@ -124,36 +124,35 @@ public class School implements SchoolStat {
         double[] helpArray = new double[n];
         double countvalues = 0;
         double temp =0;
+        Student theBestStudent = null;
 
 
         // add to array and use bobble sort and take the first value
 
         for (int i = 0; i < n; i++) {
             helpArray[i] =  list.get(i).getAverageGrade();  // add to array all  values Math grade from arraylist (Math grad from every student)
-            System.out.println("avg " + list.get(i).getAverageGrade());
+
         }
 
 
+        // Bubble sort
         for(int i=0; i < n; i++){
             for(int j=1; j < (n-i); j++){
                 if(helpArray[j-1] > helpArray[j]){
-
                     temp = helpArray[j-1];
                     helpArray[j-1] = helpArray[j];
                     helpArray[j] = temp;
                 }
-
             }
         }
 
-        Student theBestStudent = null;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++) {   //
             if (helpArray[0] == list.get(i).getAverageGrade()) {
-                System.out.println(list.get(i).getFullName());
+         //       System.out.println(list.get(i).getFullName());
                 theBestStudent = list.get(i);
             }
         }
-        System.out.println(helpArray[0]);
+       // System.out.println(helpArray[0]);
 
         return theBestStudent;
     }
@@ -161,17 +160,88 @@ public class School implements SchoolStat {
     @Override
     public Student getTheWorstStudent() {
 
+        int n = list.size();
+        double[] helpArray = new double[n];
+        double countvalues = 0;
+        double temp =0;
+        Student theWorstStudent = null;
 
-        return null;
+
+        // add to array and use bobble sort and take the first value
+
+        for (int i = 0; i < n; i++) {
+            helpArray[i] =  list.get(i).getAverageGrade();  // add to array all  values Math grade from arraylist (Math grad from every student)
+
+        }
+
+
+        // Bubble sort
+        for(int i=0; i < n; i++){
+            for(int j=1; j < (n-i); j++){
+                if(helpArray[j-1] > helpArray[j]){
+                    temp = helpArray[j-1];
+                    helpArray[j-1] = helpArray[j];
+                    helpArray[j] = temp;
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {   //
+            if (helpArray[(list.size()-1)] == list.get(i).getAverageGrade()) {
+                //       System.out.println(list.get(i).getFullName());
+                theWorstStudent = list.get(i);
+            }
+        }
+        // System.out.println(helpArray[0]);
+
+        return theWorstStudent;
     }
+
 
     @Override
     public List getListSortedByLastNameAsc() {
+
+
+
         return null;
     }
 
     @Override
     public List getListSortedByAbsenceDesc() {
+        int n = list.size();
+        int[] helpArray = new int[n];
+        int temp = 0 ;
+
+        ArrayList<Student> helpList = new ArrayList<Student>();
+
+        for (int i = 0; i < n; i++) {
+            helpArray[i] =  list.get(i).getAbsence();  // add to array all  values Math grade from arraylist (Math grad from every student)
+
+        }
+
+
+        // bubble sort
+        for(int i=0; i < n; i++){
+            for(int j=1; j < (n-i); j++){
+                if(helpArray[j-1] > helpArray[j]){
+                    temp = helpArray[j-1];
+                    helpArray[j-1] = helpArray[j];
+                    helpArray[j] = temp;
+                }
+            }
+        }
+
+        for (int i = n - 1; i >=0; i--) {
+            System.out.print(" "+  helpArray[i]);
+                  helpList.add(list.get(i));
+
+        }
+
+        for (int i = (helpList.size() - 1 ); i >=0; i--) {
+            System.out.print("  " + helpList.get(i).getAbsence());
+        }
+
+
         return null;
     }
 
