@@ -12,7 +12,7 @@ public class Main {
         System.out.println("helloussss world");
 
         School school1 = new School();
-        Student student1 = new Student("Jednotka", "Sagan", (byte) 1, (byte) 1, (byte) 4, 312);
+        Student student1 = new Student("Jednotka", "aSagan", (byte) 1, (byte) 1, (byte) 4, 312);
         Student student2 = new Student("trojka", "priezvisko", (byte) 4, (byte) 2, (byte) 2, 90);
         Student student3 = new Student("dvojka", "prezvisko", (byte) 1, (byte) 1, (byte) 1, 133);
         Student student4 = new Student("stvorka", "mrkvicka", (byte) 1, (byte) 2, (byte) 1, 12);
@@ -33,7 +33,7 @@ public class Main {
         school1.addStudent(student8);
 
         school1.addStudent(student3);
-        school1.showlist();
+
         System.out.println("Average absence all students is " + school1.getAverageAbsence());
 
         System.out.println("The Lowest Absence is           " +  school1.getTheLowestAbsence());
@@ -46,15 +46,10 @@ public class Main {
 
         System.out.println(" The worst student in this amazing shchool is " + school1.getTheWorstStudent().getFullName());
 
-        school1.getListSortedByAbsenceDesc();
-
-        System.out.println("===== next line ===");
 
         System.out.println(Arrays.toString(school1.getListSortedByAbsenceDesc().getItems()));
-        System.out.println("------------------------");
-        //school1.playground();
 
-      //  school1.showlist();
+        System.out.println(Arrays.toString(school1.getListSortedByLastNameAsc().getItems()));
 
 }
 }

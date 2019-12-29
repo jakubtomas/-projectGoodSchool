@@ -2,6 +2,8 @@ package goodSchool.project1;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Objects;
 
 public class School implements SchoolStat {
@@ -19,16 +21,9 @@ public class School implements SchoolStat {
 
     public void addStudent(Student student) {
         this.list.add(student);
-        //this.list.add(String.valueOf(student));
         count++; // if I add new student  count has to increase ,,because i know how many student i Have ??
     }
 
-    public void showlist() {  // notes this function delete
-        /*for (int i = 0; i < list.size(); i++) {
-            System.out.println("hellou");
-            System.out.println(list.get(i).getAbsence());
-        }*/
-    }
 
     public static int getCount() {
         return count;
@@ -52,7 +47,6 @@ public class School implements SchoolStat {
     @Override
     public int getTheLowestAbsence() {
         int n = list.size();
-        int temp = 0;
         int[] helpArray = new int[n];
 
         for (int i = 0; i < n; i++) {
@@ -60,7 +54,8 @@ public class School implements SchoolStat {
         }
 
         // Bubble sort
-        for(int i=0; i < n; i++){
+        int temp = 0;
+        for(int i = 0; i < n; i++){
             for(int j=1; j < (n-i); j++){
                 if(helpArray[j-1] > helpArray[j]){
 
@@ -204,10 +199,37 @@ public class School implements SchoolStat {
 
     @Override
     public List getListSortedByLastNameAsc() {
+        List myList = new List();
+        String [] helpArray =  new String[list.size()];
 
 
+        for (int i = 0; i < helpArray.length; i++) {
+            helpArray[i] = list.get(i).getLastName();
+        }
 
-        return null;
+        // BUBBLE  sort
+        int j;
+        boolean flag = true;  // will determine when the sort is finished
+        String temp;
+
+        while ( flag )
+        {
+            flag = false;
+            for ( j = 0;  j < helpArray.length - 1;  j++ )
+            {
+                if ( helpArray [ j ].compareToIgnoreCase( helpArray [ j+1 ] ) > 0 )
+                {                                             // ascending sort
+                    temp = helpArray [ j ];
+                    helpArray [ j ] = helpArray [ j+1];     // swapping
+                    helpArray [ j+1] = temp;
+                    flag = true;
+                }
+            }
+        }
+        for ( int k = 0;  k < helpArray.length;  k++ ){
+            myList.add(helpArray[k]);
+            }
+        return myList;
     }
 
     @Override
@@ -290,7 +312,6 @@ public class School implements SchoolStat {
                 permission=  true;
             }
         }
-
         return permission;
 
     }
