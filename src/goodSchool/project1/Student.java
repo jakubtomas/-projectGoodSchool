@@ -7,12 +7,18 @@ public class Student extends Person {
     protected int absence;
 
 
+
     public Student(String firstName, String lastName, byte g_Mat, byte g_Eng, byte g_Inf, int absence) {
         super(firstName, lastName);
         this.g_Mat = g_Mat;
         this.g_Eng = g_Eng;
         this.g_Inf = g_Inf;
         this.absence = absence;
+    }
+
+    // setter
+    public void setAbsence(int number) {
+        this.absence = number;
     }
 
     public byte getG_Mat() {

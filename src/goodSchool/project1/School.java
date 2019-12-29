@@ -2,17 +2,24 @@ package goodSchool.project1;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class School implements SchoolStat {
 
-    private ArrayList<Student> list = new ArrayList<Student>();
+    //private ArrayList<Student> list = new ArrayList<Student>();
+    //private List list2 = new List();
+    private java.util.List<Student> list;
 
     private static int count = 0;
 
-    public School() { } // constructor
+
+    public School() { // constructor
+                this.list = new ArrayList<>();
+    }
 
     public void addStudent(Student student) {
         this.list.add(student);
+        //this.list.add(String.valueOf(student));
         count++; // if I add new student  count has to increase ,,because i know how many student i Have ??
     }
 
@@ -148,7 +155,6 @@ public class School implements SchoolStat {
 
         for (int i = 0; i < n; i++) {   //
             if (helpArray[0] == list.get(i).getAverageGrade()) {
-         //       System.out.println(list.get(i).getFullName());
                 theBestStudent = list.get(i);
             }
         }
@@ -187,12 +193,10 @@ public class School implements SchoolStat {
         }
 
         for (int i = 0; i < n; i++) {   //
-            if (helpArray[(list.size()-1)] == list.get(i).getAverageGrade()) {
-                //       System.out.println(list.get(i).getFullName());
+            if (helpArray[(list.size()-1)] == list.get(i).getAverageGrade()) {//       System.out.println(list.get(i).getFullName());
                 theWorstStudent = list.get(i);
             }
         }
-        // System.out.println(helpArray[0]);
 
         return theWorstStudent;
     }
@@ -211,6 +215,13 @@ public class School implements SchoolStat {
         int n = list.size();
         int[] helpArray = new int[n];
         int temp = 0 ;
+       // java.util.List<Student> mainlyList = null;
+        java.util.List<Student> mainlyList = new  ArrayList<>();;
+
+        List myList = new List();
+        //List myListe = new List();
+
+
 
         ArrayList<Student> helpList = new ArrayList<Student>();
 
@@ -221,7 +232,7 @@ public class School implements SchoolStat {
 
 
         // bubble sort
-        for(int i=0; i < n; i++){
+       /* for(int i=0; i < n; i++){
             for(int j=1; j < (n-i); j++){
                 if(helpArray[j-1] > helpArray[j]){
                     temp = helpArray[j-1];
@@ -229,21 +240,61 @@ public class School implements SchoolStat {
                     helpArray[j] = temp;
                 }
             }
+        }*/
+
+        for(int i=0; i < n; i++){
+            for(int j=1; j < (n-i); j++){
+                if(helpArray[j-1] < helpArray[j]){
+                    temp = helpArray[j-1];
+                    helpArray[j-1] = helpArray[j];
+                    helpArray[j] = temp;
+                }
+
+            }
         }
 
-        for (int i = n - 1; i >=0; i--) {
-            System.out.print(" "+  helpArray[i]);
-                  helpList.add(list.get(i));
 
+        int[] numberWasUsed = new int[n] ;
+
+        for (int i = 0; i < numberWasUsed.length; i++) {
+            numberWasUsed[i] = -1;
         }
 
-        for (int i = (helpList.size() - 1 ); i >=0; i--) {
-            System.out.print("  " + helpList.get(i).getAbsence());
+        for (int i =0; i < n; i++) {
+            for (int j = 0; j < n  ; j++) {
+
+                if ((helpArray[i] == list.get(j).getAbsence()) && checkvalue(numberWasUsed, j)) {
+                    numberWasUsed[j] = j;
+                  // helpList.add(list.get(j));
+                    //  mainlyList.add(list.get(j));
+                   // System.out.println(" " + list.get(j).getFullName());
+                    myList.add(list.get(j).getFullName());
+                    break;
+
+
+                }
+            }
         }
 
-
-        return null;
+        return  myList;
     }
+
+    private boolean checkvalue(int[] array, int valueToCompare) {
+        boolean permission = false;
+
+        for (int i = 0; i <array.length; i++) {
+            if (array[i] == valueToCompare) {
+                permission = false;
+                break;
+            } else {
+                permission=  true;
+            }
+        }
+
+        return permission;
+
+    }
+
 
 
 
